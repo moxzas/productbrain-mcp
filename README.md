@@ -18,7 +18,7 @@ This server is a **thin transport over ProductBrain's versioned v1 REST API**. E
   "mcpServers": {
     "productbrain": {
       "command": "npx",
-      "args": ["-y", "productbrain-mcp"],
+      "args": ["-y", "productbrain"],
       "env": {
         "PRODUCTBRAIN_API_KEY": "pb_your_key",
         "PRODUCTBRAIN_PROJECT_ID": "your-project-id"
@@ -33,7 +33,7 @@ This server is a **thin transport over ProductBrain's versioned v1 REST API**. E
 claude mcp add productbrain \
   -e PRODUCTBRAIN_API_KEY=pb_your_key \
   -e PRODUCTBRAIN_PROJECT_ID=your-project-id \
-  -- npx -y productbrain-mcp
+  -- npx -y productbrain
 ```
 
 Cursor and other clients: add an `mcpServers` entry with the same `command`/`args`/`env`.

@@ -1,11 +1,13 @@
 {
-  "name": "productbrain-mcp",
+  "name": "productbrain",
   "version": "0.0.1",
   "description": "MCP server for ProductBrain — drive your plan (search, read, mutate, workflow, view) from Claude Desktop, Cursor, or Claude Code. A thin transport over the versioned v1 REST API.",
   "type": "module",
-  "private": true,
+  "license": "MIT",
+  "homepage": "https://productbrain.com",
+  "keywords": ["productbrain", "mcp", "model-context-protocol", "product-management", "ai-agents", "claude", "cursor"],
   "bin": {
-    "productbrain-mcp": "dist/server.js"
+    "productbrain": "dist/server.js"
   },
   "files": [
     "dist",
