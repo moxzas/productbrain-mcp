@@ -38,8 +38,6 @@ claude mcp add productbrain \
 
 Cursor and other clients: add an `mcpServers` entry with the same `command`/`args`/`env`.
 
-> Until the package is published to npm, run from source: clone, `cd mcp && npm install && npm run build`, then point `command` at `node` with `args: ["/abs/path/mcp/dist/server.js"]`.
-
 ## Config (env)
 
 | Var | Required | Default |
