@@ -1,0 +1,29 @@
+{
+  "name": "productbrain-mcp",
+  "version": "0.0.1",
+  "description": "MCP server for ProductBrain — drive your plan (search, read, mutate, workflow, view) from Claude Desktop, Cursor, or Claude Code. A thin transport over the versioned v1 REST API.",
+  "type": "module",
+  "private": true,
+  "bin": {
+    "productbrain-mcp": "dist/server.js"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "tsx src/server.ts",
+    "spike": "tsx src/spike-proof.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.3",
+    "tsx": "^4.22.4",
+    "typescript": "^6.0.3"
+  }
+}
