@@ -1,7 +1,7 @@
 {
   "name": "@productbrain-com/mcp",
-  "version": "0.0.1",
-  "description": "MCP server for ProductBrain — drive your plan (search, read, mutate, workflow, view) from Claude Desktop, Cursor, or Claude Code. A thin transport over the versioned v1 REST API.",
+  "version": "0.1.0",
+  "description": "MCP server for ProductBrain — drive your plan (search, read, mutate, workflow, view, projects, webhooks, share links, seats) from Claude Desktop, Cursor, or Claude Code. A thin transport over the versioned v1 REST API.",
   "type": "module",
   "license": "MIT",
   "homepage": "https://productbrain.com",
@@ -20,6 +20,7 @@
     "build": "tsc",
     "start": "tsx src/server.ts",
     "spike": "tsx src/spike-proof.ts",
+    "parity": "tsx src/parity-proof.ts",
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
