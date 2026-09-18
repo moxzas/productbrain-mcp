@@ -18,6 +18,7 @@
   ],
   "scripts": {
     "build": "tsc",
+    "smoke": "node scripts/smoke.mjs",
     "start": "tsx src/server.ts",
     "spike": "tsx src/spike-proof.ts",
     "parity": "tsx src/parity-proof.ts",
