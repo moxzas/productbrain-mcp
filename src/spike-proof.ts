@@ -1,5 +1,5 @@
 /**
- * Spike proof for job-2432 — prove the MCP seam end-to-end, headless (no GUI client).
+ * Spike proof — prove the MCP seam end-to-end, headless (no GUI client).
  * Spawns server.ts over stdio via the MCP client, lists tools, then exercises a READ
  * (search) and a WRITE (mutate add → delete cleanup). If this passes, the transport +
  * pb_ auth + tool plumbing all work, and the remaining tools (same mechanism) are

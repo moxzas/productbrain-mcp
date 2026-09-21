@@ -1,0 +1,41 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.moxzas/productbrain",
+  "title": "ProductBrain",
+  "description": "Drive a ProductBrain product plan (goals, needs, approaches, jobs) from your agent: search, read, mutate, run the methodology workflow, steer the live view. Thin transport over the versioned v1 REST API.",
+  "version": "0.1.0",
+  "websiteUrl": "https://productbrain.com",
+  "repository": {
+    "url": "https://github.com/moxzas/productbrain-mcp",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "@productbrain-com/mcp",
+      "version": "0.1.0",
+      "runtimeHint": "npx",
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
+        {
+          "name": "PRODUCTBRAIN_API_KEY",
+          "description": "Your pb_ API key (Settings → API Keys in the app; the free tier includes API access).",
+          "isRequired": true,
+          "isSecret": true
+        },
+        {
+          "name": "PRODUCTBRAIN_PROJECT_ID",
+          "description": "Default project id. Optional; every tool also accepts projectId.",
+          "isRequired": false
+        },
+        {
+          "name": "PRODUCTBRAIN_API_URL",
+          "description": "API base URL. Defaults to https://productbrain.com/api/v1.",
+          "isRequired": false,
+          "default": "https://productbrain.com/api/v1"
+        }
+      ]
+    }
+  ]
+}

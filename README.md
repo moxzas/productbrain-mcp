@@ -106,18 +106,23 @@ Every agent-facing `/api/v1` endpoint has a tool. One tool, one endpoint, same `
 
 Full API reference: <https://productbrain.com/docs/llm-guide.md>.
 
+## Source, licence, registry
+
+- Source: <https://github.com/moxzas/productbrain-mcp> (MIT). Issues and pull requests welcome there.
+- npm: [`@productbrain-com/mcp`](https://www.npmjs.com/package/@productbrain-com/mcp). Every release is published from the repository's tag of the same version.
+- MCP registry name: `io.github.moxzas/productbrain` (`server.json` in this repo is the registry manifest).
+- The server sends `User-Agent: productbrain-mcp/<version>` so you can tell MCP traffic from raw REST calls in your own logs.
+
 ## Proving it works
 
-Two headless scripts, both run against a real deployment (point them at staging, not production):
+Two headless scripts in the repository (`src/spike-proof.ts`, `src/parity-proof.ts`; not shipped in the npm package), both run against a real deployment. Use a throwaway project on your own account:
 
 ```bash
-PRODUCTBRAIN_API_URL=https://staging.productbrain.com/api/v1 \
-PRODUCTBRAIN_API_KEY=pb_your_staging_key \
+PRODUCTBRAIN_API_KEY=pb_your_key \
 PRODUCTBRAIN_PROJECT_ID=your-sandbox-project \
 npm run spike     # transport + auth + one read + one write
 
-PRODUCTBRAIN_API_URL=https://staging.productbrain.com/api/v1 \
-PRODUCTBRAIN_API_KEY=pb_your_staging_key \
+PRODUCTBRAIN_API_KEY=pb_your_key \
 npm run parity    # every non-plan tool once, on a throwaway project
 ```
 
