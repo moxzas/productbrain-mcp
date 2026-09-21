@@ -13,6 +13,7 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { z } from 'zod';
 
+const MCP_VERSION = '0.1.0';
 const API_URL = (process.env.PRODUCTBRAIN_API_URL || 'https://productbrain.com/api/v1').replace(/\/$/, '');
 const API_KEY = process.env.PRODUCTBRAIN_API_KEY;
 const DEFAULT_PROJECT = process.env.PRODUCTBRAIN_PROJECT_ID;
@@ -39,6 +40,9 @@ async function pb(
     method,
     headers: {
       Authorization: `Bearer ${API_KEY}`,
+      // Lets the server tell MCP traffic from raw REST calls (the monthly seed
+      // report counts it). Version tracks package.json.
+      'User-Agent': `productbrain-mcp/${MCP_VERSION}`,
       ...(opts.body ? { 'Content-Type': 'application/json' } : {}),
       ...(opts.idempotencyKey ? { 'Idempotency-Key': opts.idempotencyKey } : {}),
     },
@@ -55,7 +59,7 @@ function needProject(p?: string): string | null {
 }
 const noProject = { isError: true, content: [{ type: 'text' as const, text: 'projectId required: set PRODUCTBRAIN_PROJECT_ID or pass projectId.' }] };
 
-const server = new McpServer({ name: 'productbrain', version: '0.0.1' });
+const server = new McpServer({ name: 'productbrain', version: MCP_VERSION });
 
 server.registerTool('search', {
   description: 'Semantic search over the ProductBrain plan. Returns nodes ranked by similarity with ancestor paths. Use this FIRST for any lookup — never scan all nodes by label.',
