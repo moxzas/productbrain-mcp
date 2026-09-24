@@ -96,6 +96,31 @@ server.registerTool('get_tree', {
   return out(await pb('GET', '/tree', { query: { projectId: pid, nodeId, direction } }));
 });
 
+server.registerTool('get_changelog', {
+  description: "Read the plan's history: every add/update/delete/restore, newest first, each attributed to the app or to a named agent. This is how you find a node AFTER it was deleted — /nodes can no longer see it, but restore needs its id. Filter by nodeId, action (add|update|delete|restore), source (app|api_key), agentId, since/before (ISO). Page with before=<_meta.next_before>, never an offset. Then undo with mutate {action:'restore', nodeId}, restoring a parent before its children.",
+  inputSchema: {
+    nodeId: z.string().optional(),
+    action: z.string().optional(),
+    source: z.string().optional(),
+    agentId: z.string().optional(),
+    since: z.string().optional(),
+    before: z.string().optional(),
+    limit: z.number().optional(),
+    projectId: z.string().optional(),
+  },
+}, async ({ nodeId, action, source, agentId, since, before, limit, projectId }) => {
+  const pid = needProject(projectId); if (!pid) return noProject;
+  const query: Record<string, string> = { projectId: pid };
+  if (nodeId) query.nodeId = nodeId;
+  if (action) query.action = action;
+  if (source) query.source = source;
+  if (agentId) query.agentId = agentId;
+  if (since) query.since = since;
+  if (before) query.before = before;
+  if (limit !== undefined) query.limit = String(limit);
+  return out(await pb('GET', '/changelog', { query }));
+});
+
 server.registerTool('mutate', {
   description: 'Create/update/delete plan nodes and phases. action = add|update|delete|batch|addIteration|updateIteration|deleteIteration|classify. Put the rest of the v1 mutate body in payload (node | nodeId+data | mutations | iteration). Pass idempotencyKey (a UUID) to make a retry safe — a replay returns the original result instead of double-creating.',
   inputSchema: {

@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url';
 
 const MCP_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const HARD_TIMEOUT_MS = Number(process.env.SMOKE_TIMEOUT_MS) || 60_000;
-const EXPECTED_TOOL_COUNT = 25;
+const EXPECTED_TOOL_COUNT = 26; // 26th: get_changelog (plan history)
 const REQUIRED_TOOLS = ['get_tree', 'search', 'mutate', 'run_workflow'];
 const SERVER_ENV = {
   ...process.env,
