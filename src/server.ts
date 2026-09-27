@@ -351,6 +351,21 @@ server.registerTool('tier_status', {
   return out(await pb('GET', '/tier-status'));
 });
 
+// ─── Feedback (POST /api/v1/feedback) ────────────────────────────────────────
+
+server.registerTool('submit_feedback', {
+  description: 'Tell the ProductBrain team how PB should improve: a feature you needed, friction you hit, a bug, or a general note. Stored for the team to read, not added to any plan. Make the summary self-explanatory (there is no reply channel). Keep credentials, customer records and confidential plan content out. Max 20 per 24h, so batch related points.',
+  inputSchema: {
+    kind: z.enum(['feature_request', 'friction', 'bug', 'note']),
+    summary: z.string().describe('one line, max 200 chars'),
+    details: z.string().optional().describe('what you tried, what happened, what would have helped (max 5000 chars)'),
+    context: z.record(z.string(), z.unknown()).optional().describe('e.g. { endpoint, workflow } (max 4KB)'),
+    projectId: z.string().optional(),
+  },
+}, async ({ kind, summary, details, context, projectId }) => {
+  return out(await pb('POST', '/feedback', { body: { kind, summary, details, context, projectId: needProject(projectId) ?? undefined } }));
+});
+
 const transport = new StdioServerTransport();
 await server.connect(transport);
 console.error(`ProductBrain MCP server on stdio → ${API_URL}`);

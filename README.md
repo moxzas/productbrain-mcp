@@ -103,6 +103,7 @@ Every agent-facing `/api/v1` endpoint has a tool. One tool, one endpoint, same `
 | `invite_contributor` | `POST /members` | Passwordless guest invite, scoped to the projects you name (Team tier) |
 | `revoke_member` | `DELETE /members` | Remove a seat; an agent's key dies with its last membership |
 | `tier_status` | `GET /tier-status` | Your tier, API access, credit balance and limits — check before a large run |
+| `submit_feedback` | `POST /feedback` | Tell the PB team what to improve: feature requests, friction, bugs, notes |
 
 Full API reference: <https://productbrain.com/docs/llm-guide.md>.
 
