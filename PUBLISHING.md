@@ -7,7 +7,7 @@ Maintainer notes. Everything below is prepared; the steps marked **founder** nee
 - `package.json`: `version` 0.1.0, `repository` → `github.com/moxzas/productbrain-mcp`, `bugs`, `homepage`, `mcpName` `io.github.moxzas/productbrain` (the registry validates npm ownership by reading this field from the published package), `engines`, `files` (dist, README, LICENSE, server.json).
 - `server.json`: the registry manifest (schema 2025-12-11), npm package `@productbrain-com/mcp` 0.1.0, stdio transport, the three env vars documented.
 - `LICENSE`: MIT, Trisafe trading as ProductBrain.
-- `README.md`: install for Claude Desktop / Claude Code / Cursor, the 25 tools, source + licence + registry section. No "clone a private repo" instruction remains.
+- `README.md`: install for Claude Desktop / Claude Code / Cursor, the 27 tools, source + licence + registry section. No "clone a private repo" instruction remains.
 - Secret scan (2026-09-20): no `pb_`, `sk-`, `eyJ…`, `ghp_`, `npm_`, `.env*` or key-shaped strings under `mcp/` outside `node_modules`. The proof scripts read keys from env only.
 - The server sends `User-Agent: productbrain-mcp/0.1.0`.
 

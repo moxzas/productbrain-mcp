@@ -1,7 +1,7 @@
 {
   "name": "@productbrain-com/mcp",
   "version": "0.1.0",
-  "description": "MCP server for ProductBrain — drive your plan (search, read, mutate, workflow, view, projects, webhooks, share links, seats) from Claude Desktop, Cursor, or Claude Code. A thin transport over the versioned v1 REST API.",
+  "description": "MCP server for ProductBrain \u2014 drive your plan (search, read, mutate, workflow, view, projects, webhooks, share links, seats) from Claude Desktop, Cursor, or Claude Code. A thin transport over the versioned v1 REST API.",
   "type": "module",
   "license": "MIT",
   "homepage": "https://productbrain.com",
@@ -29,7 +29,7 @@
     "productbrain": "dist/server.js"
   },
   "files": [
-    "dist",
+    "dist/server.js",
     "README.md",
     "LICENSE",
     "server.json"

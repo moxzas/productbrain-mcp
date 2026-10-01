@@ -61,6 +61,7 @@ Every agent-facing `/api/v1` endpoint has a tool. One tool, one endpoint, same `
 | `list_iterations` | `GET /iterations` | Phases; `current:true` for the active one |
 | `run_workflow` | `POST /workflow` | Story-Mapping methodology (add / task-curate / phase-assign) |
 | `export_okf` | `GET /export-okf` | The plan as a portable OKF file bundle |
+| `get_changelog` | `GET /changelog` | Plan history: every add/update/delete/restore, attributed to the app or a named agent |
 
 **The view**
 
